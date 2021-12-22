@@ -10,14 +10,20 @@ def get_scraping():
     # print(page.content)
     soup = BeautifulSoup(page.content,'html.parser')
     # print(soup)
+    results_paragraph = soup.find_all('p')    
+    results_citation = soup.find_all(title='Wikipedia:Citation needed')
+    phrases = []
+    result_count = 0
 
-    results = soup.find_all('p')
-    print(results)
-    for result in results:
+    for paragraph in results_paragraph:       
         result_count +=1
+        print(paragraph)
+        phrases.append(paragraph)
+    # print(results_citation)
+    print(result_count)
     # citations_required = results.find_all(title='Wikipedia:Citation needed')
     # print(citations_required)
-    return result_count
+    
 
 
 
